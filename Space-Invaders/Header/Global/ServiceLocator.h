@@ -56,7 +56,7 @@ namespace Global
         Time::TimeService* getTimeService();
         Enemy::EnemyService* getEnemyService();
         Gameplay::GameplayService* getGameplayService();
-        
+        Element::ElementService* getElementService();
 
     };
 }
