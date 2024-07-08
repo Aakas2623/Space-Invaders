@@ -5,8 +5,8 @@
 #include "../../Header/Time/TimeService.h"
 #include "../../Header/UI/UIService.h"
 #include "../../Header/Enemy/EnemyService.h"
-#include "../../header/Gameplay/GameplayService.h"
-#include "../../Header/Element/ElementService.h"
+#include "../../Header/Gameplay/GameplayService.h"
+#include "../../Header/Elements/ElementService.h"
 
 namespace Global
 {

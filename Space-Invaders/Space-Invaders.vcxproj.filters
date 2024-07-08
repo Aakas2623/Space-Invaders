@@ -78,16 +78,16 @@
     <ClCompile Include="Source\Enemy\Controllers\ZapperController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Element\ElementService.cpp">
+    <ClCompile Include="Source\Elements\ElementService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Element\Bunker\BunkerController.cpp">
+    <ClCompile Include="Source\Elements\Bunker\BunkerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Element\Bunker\BunkerModel.cpp">
+    <ClCompile Include="Source\Elements\Bunker\BunkerModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Element\Bunker\BunkerView.cpp">
+    <ClCompile Include="Source\Elements\Bunker\BunkerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,16 +155,16 @@
     <ClInclude Include="Header\Enemy\EnemyConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Element\ElementService.h">
+    <ClInclude Include="Header\Elements\ElementService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Element\Bunker\BunkerModel.h">
+    <ClInclude Include="Header\Elements\Bunker\BunkerModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Element\Bunker\BunkerView.h">
+    <ClInclude Include="Header\Elements\Bunker\BunkerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Element\Bunker\BunkerController.h">
+    <ClInclude Include="Header\Elements\Bunker\BunkerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
