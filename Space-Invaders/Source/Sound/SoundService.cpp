@@ -1,29 +1,47 @@
-#pragma once
-#include "SFML/Audio.hpp"
+#include "../../header/Sound/SoundService.h"
+#include "../../header/Global/Config.h"
 
 namespace Sound
 {
-	enum class SoundType
+	using namespace Global;
+
+	void SoundService::initialize()
 	{
-		BUTTON_CLICK,
-	};
+		loadBackgroundMusicFromFile();
+		loadSoundFromFile();
+	}
 
-	class SoundService
+	void SoundService::loadBackgroundMusicFromFile()
 	{
-	private:
-		const int background_music_volume = 30;
+		if (!background_music.openFromFile(Config::background_music_path))
+			printf("Error loading background music file");
+	}
 
-		sf::Music background_music;
-		sf::Sound sound_effect;
-		sf::SoundBuffer buffer_button_click;
+	void SoundService::loadSoundFromFile()
+	{
+		if (!buffer_button_click.loadFromFile(Config::button_click_sound_path))
+			printf("Error loading background music file");
+	}
 
-		void loadBackgroundMusicFromFile();
-		void loadSoundFromFile();
+	void SoundService::playSound(SoundType soundType)
+	{
+		switch (soundType)
+		{
+		case SoundType::BUTTON_CLICK:
+			sound_effect.setBuffer(buffer_button_click);
+			break;
+		default:
+			printf("Invalid sound type");
+			return;
+		}
 
-	public:
-		void initialize();
+		sound_effect.play();
+	}
 
-		void playSound(SoundType soundType);
-		void playBackgroundMusic();
-	};
+	void SoundService::playBackgroundMusic()
+	{
+		background_music.setLoop(true);
+		background_music.setVolume(background_music_volume);
+		background_music.play();
+	}
 }
