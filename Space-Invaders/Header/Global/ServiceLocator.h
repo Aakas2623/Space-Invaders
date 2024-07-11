@@ -8,6 +8,7 @@
 #include "../../Header/Gameplay/GameplayService.h"
 #include "../../Header/Elements/ElementService.h"
 #include "../../header/Sound/SoundService.h"
+#include "../../Header/Bullet/BulletService.h"
 
 namespace Global
 {
@@ -35,6 +36,8 @@ namespace Global
 
         Sound::SoundService* sound_service;
 
+        Bullet::BulletService* bullet_service;
+
         // Private Constructor and Destructor:
         ServiceLocator();
         // Constructor for initializing the ServiceLocator.
@@ -49,7 +52,8 @@ namespace Global
         static ServiceLocator* getInstance(); 			// Provides a method to access the unique ServiceLocator instance (object).
         void initialize(); 			//	Initializes the ServiceLocator.
         void update(); 				//	Updates all services.
-        void render(); 				//	Renders using the services.
+        void render(); 				//	Renders using the services.(
+        void deleteServiceLocator();
 
         // Methods to Get Specific Services: 
         Graphic::GraphicService* getGraphicService();
@@ -60,6 +64,7 @@ namespace Global
         Enemy::EnemyService* getEnemyService();
         Gameplay::GameplayService* getGameplayService();
         Element::ElementService* getElementService();
+        Bullet::BulletService* getBulletService();
         Sound::SoundService* getSoundService();
 
     };

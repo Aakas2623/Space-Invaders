@@ -14,6 +14,7 @@ namespace Global
 	using namespace Gameplay;
 	using namespace Element;
 	using namespace Sound;
+	using namespace Bullet;
 
 	// Constructor: Initializes the graphic_service pointer to null and creates services.
 	ServiceLocator::ServiceLocator() {
@@ -26,6 +27,7 @@ namespace Global
 		gameplay_service = nullptr;
 		element_service = nullptr;
 		sound_service = nullptr;
+		bullet_service = nullptr;
 		createServices(); // Call createServices to instantiate services
 	}
 
@@ -44,6 +46,7 @@ namespace Global
 		enemy_service = new EnemyService();
 		gameplay_service = new GameplayService();
 		element_service = new ElementService();
+		bullet_service = new BulletService();
 		sound_service = new SoundService();
 	}
 
@@ -57,6 +60,7 @@ namespace Global
 		delete(enemy_service);
 		delete(gameplay_service);
 		delete(element_service);
+		delete(bullet_service);
 		delete(sound_service);
 
 		graphic_service = nullptr; // Reset pointer to null to avoid dangling pointer
@@ -78,6 +82,7 @@ namespace Global
 		enemy_service->initialize();
 		gameplay_service->initialize();
 		element_service->initialize();
+		bullet_service->initialize();
 		sound_service->initialize();
 	}
 
@@ -92,9 +97,10 @@ namespace Global
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
 			gameplay_service->update();
-			element_service->update();
 			player_service->update();
 			enemy_service->update();
+			bullet_service->update();
+			element_service->update();
 		}
 
 		ui_service->update();
@@ -108,9 +114,10 @@ namespace Global
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
 			gameplay_service->render();
-			element_service->render();
 			player_service->render();
 			enemy_service->render();
+			bullet_service->render();
+			element_service->render();
 		}
 		
 		ui_service->render();
@@ -127,6 +134,12 @@ namespace Global
 	GameplayService* ServiceLocator::getGameplayService() { return gameplay_service; }
 	ElementService* ServiceLocator::getElementService() { return element_service; }
 	SoundService* ServiceLocator::getSoundService() { return sound_service; }
+
+	void ServiceLocator::deleteServiceLocator()
+	{
+		delete(this);
+	}
+
 }
 
 
