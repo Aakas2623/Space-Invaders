@@ -5,10 +5,12 @@ namespace Enemy
 {
     namespace Controller
     {
+
         class ZapperController : public EnemyController
         {
         private:
             float vertical_travel_distance = 100.f;
+            float zapper_rate_of_fire = 4.f;
 
             void move() override;
             void moveLeft();
@@ -20,6 +22,7 @@ namespace Enemy
             ~ZapperController();
 
             void initialize() override;
+            void fireBullet();
         };
     }
 }

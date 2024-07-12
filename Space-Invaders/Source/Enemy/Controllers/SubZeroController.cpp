@@ -7,6 +7,7 @@ namespace Enemy
 {
 
 	using namespace Global;
+	using namespace Bullet;
 
 	namespace Controller
 	{
@@ -18,6 +19,7 @@ namespace Enemy
 		{
 			EnemyController::initialize();
 			enemy_model->setMovementDirection(MovementDirection::DOWN);
+			rate_of_fire = subzero_rate_of_fire; //we will set the different rate of fires for each enemy in their respective .h files.
 		}
 
 		void SubzeroController::move()
@@ -36,6 +38,13 @@ namespace Enemy
 			currentPosition.y += vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			enemy_model->setEnemyPosition(currentPosition);
+		}
+
+		void SubzeroController::fireBullet()
+		{
+			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
+				enemy_model->getEnemyPosition() + enemy_model->barrel_position_offset,
+				Bullet::MovementDirection::DOWN);
 		}
 	}
 }

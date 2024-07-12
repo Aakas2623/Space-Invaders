@@ -7,6 +7,7 @@
 
 using namespace Event;
 using namespace Global;
+using namespace Bullet;
 
 
 PlayerController::PlayerController() 
@@ -53,31 +54,46 @@ sf::Vector2f PlayerController::getPlayerPosition()
 	return player_model->getPlayerPosition();
 }
 
-
 void PlayerController::processPlayerInput()
 {
 	EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
-	if (event_service->pressedLeftKey() || event_service->pressedAKey())
-	{
-		moveLeft();
-	}
-
-	if (event_service->pressedRightKey() || event_service->pressedDKey())
-	{
-		moveRight();
-	}
-	// we will move this to event service at a later time
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Left)))
-	{
-		moveLeft();
-	}
-	// we will move this to event service at a later time
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)))
-	{
-		moveRight();
-	}
+	if (event_service->pressedLeftKey() || event_service->pressedAKey()) moveLeft();
+	if (event_service->pressedRightKey() || event_service->pressedDKey()) moveRight();
+	if (event_service->pressedLeftMouseButton()) fireBullet(); //this
 }
+
+void PlayerController::fireBullet()
+{
+	ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
+		player_model->getPlayerPosition() + player_model->barrel_position_offset,
+		Bullet::MovementDirection::UP);
+}
+
+//void PlayerController::processPlayerInput()
+//{
+//	EventService* event_service = ServiceLocator::getInstance()->getEventService();
+//
+//	if (event_service->pressedLeftKey() || event_service->pressedAKey())
+//	{
+//		moveLeft();
+//	}
+//
+//	if (event_service->pressedRightKey() || event_service->pressedDKey())
+//	{
+//		moveRight();
+//	}
+//	// we will move this to event service at a later time
+//	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Left)))
+//	{
+//		moveLeft();
+//	}
+//	// we will move this to event service at a later time
+//	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)))
+//	{
+//		moveRight();
+//	}
+//}
 
 void PlayerController::moveLeft()
 {

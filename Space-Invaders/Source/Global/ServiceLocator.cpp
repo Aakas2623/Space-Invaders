@@ -3,7 +3,6 @@
 
 namespace Global
 {
-
 	using namespace Graphic;
 	using namespace Time;
 	using namespace Player;
@@ -17,7 +16,8 @@ namespace Global
 	using namespace Bullet;
 
 	// Constructor: Initializes the graphic_service pointer to null and creates services.
-	ServiceLocator::ServiceLocator() {
+	ServiceLocator::ServiceLocator() 
+	{
 		graphic_service = nullptr; // Initialize graphic_service to null
 		time_service = nullptr;
 		event_service = nullptr;
@@ -28,6 +28,7 @@ namespace Global
 		element_service = nullptr;
 		sound_service = nullptr;
 		bullet_service = nullptr;
+
 		createServices(); // Call createServices to instantiate services
 	}
 
@@ -133,6 +134,7 @@ namespace Global
 	EnemyService* ServiceLocator::getEnemyService() { return enemy_service; }
 	GameplayService* ServiceLocator::getGameplayService() { return gameplay_service; }
 	ElementService* ServiceLocator::getElementService() { return element_service; }
+	BulletService* ServiceLocator::getBulletService() { return bullet_service; }
 	SoundService* ServiceLocator::getSoundService() { return sound_service; }
 
 	void ServiceLocator::deleteServiceLocator()
