@@ -44,6 +44,7 @@ namespace Bullet
 				scaleImage();
 			}
 			break;
+
 		}
 	}
 
