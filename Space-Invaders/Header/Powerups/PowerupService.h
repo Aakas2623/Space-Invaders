@@ -3,7 +3,7 @@
 #include "SFML/System/Vector2.hpp"
 #include "../../Header/Collectible/ICollectible.h"
 
-namespace Powerups
+namespace Powerup
 {
 
 	class PowerupController;
@@ -15,7 +15,7 @@ namespace Powerups
 	private:
 
 		std::vector<Collectible::ICollectible*> powerup_list;
-		PowerupController* createpowerup(PowerupType powerup_type);
+		PowerupController* createPowerup(PowerupType powerup_type);
 		void destroy();
 
 	public:

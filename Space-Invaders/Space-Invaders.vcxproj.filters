@@ -141,6 +141,12 @@
     <ClCompile Include="Source\Powerups\Controllers\TrippleLaserController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy\Controllers\ThunderSnakeController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -279,6 +285,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Powerups\Controllers\TrippleLaserController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Enemy\Controllers\ThunderSnakeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Enemy\Controllers\UFOController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

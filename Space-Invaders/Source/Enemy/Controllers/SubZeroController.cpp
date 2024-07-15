@@ -1,6 +1,6 @@
 #include "../../Header/Enemy/Controllers/SubZeroController.h"
 #include "../../Header/Enemy/EnemyModel.h"
-#include "../../header/Enemy/EnemyConfig.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 
 namespace Enemy

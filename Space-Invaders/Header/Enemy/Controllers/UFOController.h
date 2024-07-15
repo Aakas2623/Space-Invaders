@@ -1,28 +1,27 @@
 #pragma once
 #include "../../Header/Enemy/EnemyController.h"
+#include "../../Header/Powerups/PowerupConfig.h"
 
 namespace Enemy
 {
     namespace Controller
     {
-
-        class ZapperController : public EnemyController
+        class UFOController : public EnemyController
         {
         private:
-            float vertical_travel_distance = 100.f;
-            float zapper_rate_of_fire = 4.f;
-
+            
             void move() override;
             void moveLeft();
             void moveRight();
-            void moveDown();
+
+            void fireBullet() override;
+            Powerup::PowerupType getRandomPowerupType();
 
         public:
-            ZapperController(EnemyType type);
-            ~ZapperController();
+            UFOController(EnemyType type);
+            ~UFOController();
 
             void initialize() override;
-            void fireBullet();
         };
     }
 }
