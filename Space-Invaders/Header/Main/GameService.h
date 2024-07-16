@@ -6,7 +6,6 @@ namespace Main
 
 {
 	
-
 	enum class GameState 
 	{
 		BOOT,

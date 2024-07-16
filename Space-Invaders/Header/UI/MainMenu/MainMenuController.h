@@ -5,8 +5,8 @@ namespace UI
 {
 	namespace MainMenu
 	{
-		class MainMenuUIController
-		{
+		class MainMenuUIController{
+
 		private:
 
 			const sf::String background_texture_path = "assets/textures/space_invaders_bg.png";
