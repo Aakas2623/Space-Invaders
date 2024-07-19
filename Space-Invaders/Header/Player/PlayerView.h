@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/Player/PlayerController.h"
+#include "../../Header/UI/UIElement/ImageView.h"
 
-
+class PlayerController;
 
 class PlayerView
 {
@@ -10,29 +10,17 @@ private:
 	
 	PlayerController* player_controller; // ptr to player controller
 
-	//player texture path
-	const sf::String player_texture_path = "assets/textures/player_ship.png";
-
-	//player sprite and texture
-	sf::Texture player_texture;
-	sf::Sprite player_sprite;
-
-
 	//player sprite attribute(height & Width)(60, 60)
 	const int player_sprite_width = 60;
 	const int player_sprite_height = 60;
 
+	UI::UIElement::ImageView* player_image;
 
-	//ptr to game window for rendering our player
-	sf::RenderWindow* game_window;
+	void createUIElements();
+	void initializeImage();
+	sf::String getPlayerTexturePath();
 
-
-	//initializePlayerSprite()
-	void initializePlayerSprite();
-
-
-	//scaleSprite()
-	void scalePlayerSprite();
+	void destroy();
 
 public:
 	

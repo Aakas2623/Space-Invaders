@@ -1,7 +1,9 @@
 #include "../../Header/Player/PlayerView.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Global/Config.h"
 
 using namespace Global;
+using namespace UI::UIElement;
 
 PlayerView::PlayerView() {}
 
@@ -11,39 +13,37 @@ PlayerView::~PlayerView () {}
 void PlayerView::initialize(PlayerController* controller)
 {
 	player_controller = controller; //to later use it for setting position
-	game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-	initializePlayerSprite();
+	initializeImage();
 }
 
 
-void PlayerView::initializePlayerSprite()
+void PlayerView::createUIElements()
 {
-	if (player_texture.loadFromFile(player_texture_path))
-	{
-		player_sprite.setTexture(player_texture);
-		scalePlayerSprite();
-	}
+	player_image = new ImageView();
 }
 
-
-void PlayerView::scalePlayerSprite()
+void PlayerView::initializeImage()
 {
-	// setScale is an inbuilt method of the sprite class that takes two floats to scale the sprite. it scales the sprite to our desired height
-	player_sprite.setScale(
-		//Here we find the factor to scale our sprites with. Ignore the static_cast for now, we will discuss it later.
-		static_cast<float>(player_sprite_width) / player_sprite.getTexture()->getSize().x,
-		static_cast<float>(player_sprite_height) / player_sprite.getTexture()->getSize().y
-	);
+	player_image->initialize(getPlayerTexturePath(), player_sprite_width, player_sprite_height, player_controller->getPlayerPosition());
 }
-
 
 void PlayerView::update()
 {
-	//set the updated position before we render
-	player_sprite.setPosition(player_controller->getPlayerPosition());
+	player_image->setPosition(player_controller->getPlayerPosition());
+	player_image->update();
 }
 
+void PlayerView::render()
+{
+	player_image->render();
+}
 
-void PlayerView::render() {
-	game_window->draw(player_sprite);
+sf::String PlayerView::getPlayerTexturePath()
+{
+	return Config::player_texture_path;
+}
+
+void PlayerView::destroy()
+{
+	delete(player_image);
 }
