@@ -1,10 +1,14 @@
 #include "../../Header/Bullet/BulletModel.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Bullet
 {
-	BulletModel::BulletModel(BulletType type)
+	using namespace Entity;
+
+	BulletModel::BulletModel(BulletType type, EntityType col)
 	{
 		bullet_type = type;
+		owner_type = col;
 	}
 
 	BulletModel::~BulletModel() { }
@@ -53,5 +57,10 @@ namespace Bullet
 	void BulletModel::setMovementSpeed(float speed)
 	{
 		movement_speed = speed;
+	}
+
+	EntityType BulletModel::getOwnerEntityType()
+	{
+		return EntityType();
 	}
 }

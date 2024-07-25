@@ -3,15 +3,17 @@
 #include "../../Header/Bullet/BulletModel.h"
 #include "../../Header/Bullet/BulletConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Bullet
 {
 	using namespace Global;
+	using namespace Entity;
 
-	BulletController::BulletController(BulletType type)
+	BulletController::BulletController(BulletType type, EntityType owner_type)
 	{
 		bullet_view = new BulletView();
-		bullet_model = new BulletModel(type);
+		bullet_model = new BulletModel(type, owner_type);
 	}
 
 	BulletController::~BulletController()
@@ -89,5 +91,10 @@ namespace Bullet
 	BulletType BulletController::getBulletType()
 	{
 		return bullet_model->getBulletType();
+	}
+
+	EntityType BulletController::getOwnerEntityType()
+	{
+		return EntityType();
 	}
 }

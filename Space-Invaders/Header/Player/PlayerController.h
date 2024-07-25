@@ -5,7 +5,8 @@
 namespace Player
 {
     enum class PlayerState;
-    
+    enum class Entity;
+
     class PlayerView;
     class PlayerModel;
 
@@ -21,7 +22,7 @@ namespace Player
         void fireBullet();
 
     public:
-        PlayerController();
+        PlayerController(EntityType owner_type);
         ~PlayerController();
 
         void initialize();
@@ -30,6 +31,7 @@ namespace Player
 
         sf::Vector2f getPlayerPosition();
         PlayerState getPlayerState();
+        EntityType getOwnerEntityType();
         
     };
 

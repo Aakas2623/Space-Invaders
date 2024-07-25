@@ -8,6 +8,8 @@ namespace Player
         ALIVE,
         DEAD,
     };
+    
+    enum class Entity;
 
     class PlayerModel
     {
@@ -16,6 +18,7 @@ namespace Player
 
         sf::Vector2f player_position;
         PlayerState player_state;
+        EntityType owner_type;
         int player_score;
 
     public:
@@ -25,7 +28,7 @@ namespace Player
 
         const float player_movement_speed = 350.0f;
 
-        PlayerModel();
+        PlayerModel(EntityType col);
         ~PlayerModel();
 
         void initialize();
@@ -40,6 +43,7 @@ namespace Player
         PlayerState getPlayerState();
         void setPlayerState(PlayerState state);
 
+        EntityType getOwnerEntityType();
 
     };
 }

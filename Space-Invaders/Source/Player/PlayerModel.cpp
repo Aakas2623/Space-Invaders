@@ -1,9 +1,12 @@
 #include "../../Header/Player/PlayerModel.h"
+#include "../../Header/Entity/Entity.h"
 
 
 namespace Player
 {
-	PlayerModel::PlayerModel() { }
+	using namespace Entity;
+
+	PlayerModel::PlayerModel(EntityType col) { }
 
 	PlayerModel::~PlayerModel() { }
 
@@ -44,6 +47,10 @@ namespace Player
 	void PlayerModel::setPlayerState(PlayerState state)
 	{
 		player_state = state;
+	}
+	EntityType PlayerModel::getOwnerEntityType()
+	{
+		return EntityType();
 	}
 }
 

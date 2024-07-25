@@ -8,6 +8,7 @@ namespace Enemy
 
     enum class EnemyType;
     enum class EnemyState;
+    enum class Entity;
 
     class EnemyController
     {
@@ -29,7 +30,7 @@ namespace Enemy
         void handleOutOfBounds();
 
     public:
-        EnemyController(EnemyType type);
+        EnemyController(EnemyType type, EntityType owner_type);
         virtual ~EnemyController();
 
         virtual void initialize();
@@ -39,5 +40,6 @@ namespace Enemy
         sf::Vector2f getEnemyPosition();
         EnemyState getEnemyState();
         EnemyType getEnemyType();
+        EntityType getOwnerEntityType();
     };
 }

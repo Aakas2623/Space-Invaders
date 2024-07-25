@@ -5,6 +5,7 @@ namespace Bullet
 {
     enum class BulletType;
     enum class MovementDirection;
+    enum class Entity;
 
     class BulletModel
     {
@@ -14,10 +15,12 @@ namespace Bullet
 
         BulletType bullet_type;
         MovementDirection movement_direction;
+        EntityType owner_type;
+        
 
     public:
 
-        BulletModel(BulletType type);
+        BulletModel(BulletType type, EntityType col);
         ~BulletModel();
 
         void initialize(sf::Vector2f position, MovementDirection direction);
@@ -33,5 +36,7 @@ namespace Bullet
 
         float getMovementSpeed();
         void setMovementSpeed(float speed);
+
+        EntityType getOwnerEntityType();
     };
 }

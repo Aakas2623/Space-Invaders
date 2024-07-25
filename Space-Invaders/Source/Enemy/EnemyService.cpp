@@ -7,12 +7,14 @@
 #include "../../Header/Enemy/Controllers/ZapperController.h"
 #include "../../Header/Enemy/Controllers/ThunderSnakeController.h"
 #include "../../Header/Enemy/Controllers/UFOController.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Enemy
 {
 	using namespace Global;
 	using namespace Time;
 	using namespace Controller;
+	using namespace Entity;
 
 	EnemyService::EnemyService() { std::srand(static_cast<unsigned>(std::time(nullptr)));}
 
@@ -56,7 +58,7 @@ namespace Enemy
 		return static_cast<Enemy::EnemyType>(randomType);
 	}
 
-	EnemyController* EnemyService::spawnEnemy()
+	EnemyController* EnemyService::spawnEnemy(EntityType owner_type)
 	{
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
 		enemy_controller->initialize();
@@ -71,7 +73,7 @@ namespace Enemy
 		delete(enemy_controller);
 	}
 
-	EnemyController* EnemyService::createEnemy(EnemyType enemy_type)
+	EnemyController* EnemyService::createEnemy(EnemyType enemy_type, EntityType owner_type)
 	{
 		switch (enemy_type)
 		{

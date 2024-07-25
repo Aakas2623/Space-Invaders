@@ -9,6 +9,7 @@ namespace Bullet
     
 
     enum class BulletType;
+    enum class Entity;
   
 
     class BulletController : public Projectile::IProjectile
@@ -24,7 +25,7 @@ namespace Bullet
         void handleOutOfBounds();
 
     public:
-        BulletController(BulletType type);
+        BulletController(BulletType type, EntityType owner_type);
         virtual ~BulletController() override;
 
         void initialize(sf::Vector2f position, Bullet::MovementDirection direction) override;
@@ -33,5 +34,6 @@ namespace Bullet
 
         sf::Vector2f getProjectilePosition() override;
         BulletType getBulletType();
+        EntityType getOwnerEntityType();
     };
 }

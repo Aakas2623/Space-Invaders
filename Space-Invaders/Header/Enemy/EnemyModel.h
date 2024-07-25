@@ -6,6 +6,7 @@ namespace Enemy
     enum class EnemyType;
     enum class MovementDirection;
     enum class EnemyState;
+    enum class Entity;
 
     class EnemyModel
     {
@@ -16,6 +17,7 @@ namespace Enemy
         MovementDirection movement_direction;
         EnemyType enemy_type;
         EnemyState enemy_state;
+        EntityType owner_type;
         
 
     public:
@@ -30,7 +32,7 @@ namespace Enemy
         float vertical_movement_speed = 30.0f;
         float horizontal_movement_speed = 100.0f;
 
-        EnemyModel(EnemyType type);
+        EnemyModel(EnemyType type, EntityType col);
         ~EnemyModel();
 
         void initialize();
@@ -49,5 +51,7 @@ namespace Enemy
 
         MovementDirection getMovementDirection();
         void setMovementDirection(MovementDirection direction);
+
+        EntityType getOwnerEntityType();
     };
 }

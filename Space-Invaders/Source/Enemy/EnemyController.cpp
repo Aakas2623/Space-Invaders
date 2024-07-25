@@ -3,17 +3,19 @@
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Enemy
 {
 	using namespace Global;
 	using namespace Bullet;
+	using namespace Entity;
 
 
-	EnemyController::EnemyController(EnemyType type)
+	EnemyController::EnemyController(EnemyType type, EntityType owner_type)
 	{
 		enemy_view = new EnemyView();
-		enemy_model = new EnemyModel(type);
+		enemy_model = new EnemyModel(type, owner_type);
 	}
 
 	EnemyController::~EnemyController()
@@ -92,5 +94,10 @@ namespace Enemy
 	EnemyType EnemyController::getEnemyType()
 	{
 		return enemy_model->getEnemyType();
+	}
+
+	EntityType EnemyController::getOwnerEntityType()
+	{
+		return EntityType();
 	}
 }

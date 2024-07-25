@@ -4,17 +4,19 @@
 #include "../../Header/Event/EventService.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Bullet/BulletConfig.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Player
 {
 	using namespace Global;
 	using namespace Event;
 	using namespace Bullet;
+	using namespace Entity;
 
-	PlayerController::PlayerController()
+	PlayerController::PlayerController(EntityType owner_type)
 	{
 		player_view = new PlayerView();
-		player_model = new PlayerModel();
+		player_model = new PlayerModel(owner_type);
 	}
 
 	PlayerController::~PlayerController()
@@ -50,6 +52,11 @@ namespace Player
 		
 		return player_model->getPlayerState();
 		
+	}
+
+	EntityType PlayerController::getOwnerEntityType()
+	{
+		return EntityType();
 	}
 
 

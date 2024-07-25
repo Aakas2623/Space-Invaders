@@ -4,11 +4,13 @@
 #include "../../Header/Bullet/Controllers/FrostBulletController.h"
 #include "../../Header/Bullet/Controllers/LaserBulletController.h"
 #include "../../Header/Bullet/Controllers/TorpedoController.h"
+#include "../../Header/Entity/Entity.h"
 
 namespace Bullet
 {
 	using namespace Controller;
 	using namespace Projectile;
+	using namespace Entity;
 
 	BulletService::BulletService() { }
 
@@ -26,7 +28,7 @@ namespace Bullet
 		for (int i = 0; i < bullet_list.size(); i++) bullet_list[i]->render();
 	}
 
-	BulletController* BulletService::createBullet(BulletType bullet_type)
+	BulletController* BulletService::createBullet(BulletType bullet_type, EntityType owner_type)
 	{
 		switch (bullet_type)
 		{
@@ -46,9 +48,9 @@ namespace Bullet
 		for (int i = 0; i < bullet_list.size(); i++) delete (bullet_list[i]);
 	}
 
-	BulletController* BulletService::spawnBullet(BulletType bullet_type, sf::Vector2f position, MovementDirection direction)
+	BulletController* BulletService::spawnBullet(BulletType bullet_type, sf::Vector2f position, MovementDirection direction, EntityType owner_type)
 	{
-		BulletController* bullet_controller = createBullet(bullet_type);
+		BulletController* bullet_controller = createBullet(bullet_type, owner_type);
 
 		bullet_controller->initialize(position, direction);
 		bullet_list.push_back(bullet_controller);
