@@ -6,7 +6,6 @@
 namespace Player
 {
 
-
 	PlayerService::PlayerService()
 	{
 		player_controller = new PlayerController();
