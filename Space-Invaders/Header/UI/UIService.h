@@ -1,34 +1,27 @@
 #pragma once
-#include "../../Header/UI/MainMenu/MainMenuController.h"
-#include "../../Header/UI/Interface/IUIController.h"
+#pragma once
+#include "../../header/UI/MainMenu/MainMenuController.h"
+#include "../../header/UI/Interface/IUIController.h"
 
 namespace UI
 {
-	
+	class UIService
+	{
+	private:
+		MainMenu::MainMenuUIController* main_menu_controller;
 
-		class UIService
-		{
+		void createControllers();
+		void initializeControllers();
+		Interface::IUIController* getCurrentUIController();
+		void destroy();
 
-		private:
+	public:
+		UIService();
+		~UIService();
 
-			MainMenu::MainMenuUIController* main_menu_controller;
-
-			Interface::IUIController* getCurrentUIController();
-
-			void createControllers();
-			void initializeControllers();
-			void destroy();
-
-		public:
-
-			UIService();
-			~UIService();
-
-			void initialize();
-			void update();
-			void render();
-			void showScreen();
-
-		};
-	
+		void initialize();
+		void update();
+		void render();
+		void showScreen();
+	};
 }

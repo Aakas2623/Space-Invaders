@@ -1,49 +1,32 @@
 #include "../../header/Gameplay/GameplayView.h"
 #include "../../header/Global/ServiceLocator.h"
-#include "../../Header/Global/Config.h"
-
+#include "../../header/Global/Config.h"
+#include "../../header/Graphic/GraphicService.h"
 
 namespace Gameplay
 {
-	using namespace Global;
 	using namespace UI::UIElement;
+	using namespace Global;
 
-	GameplayView::GameplayView() { }
+	GameplayView::GameplayView() { background_image = new ImageView(); }
 
-	GameplayView::~GameplayView() { }
+	GameplayView::~GameplayView() { delete (background_image); }
 
-	void GameplayView::initialize()
+	void GameplayView::initialize() { initializeBackgroundImage(); }
+
+	void GameplayView::initializeBackgroundImage()
 	{
-		initializeImage();
+		sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+
+		background_image->initialize(Config::background_texture_path,
+			game_window->getSize().x,
+			game_window->getSize().y,
+			sf::Vector2f(0, 0));
+
+		//background_image->setImageAlpha(background_alpha); -> looks ugly with the transperency, your choice if you want to use this.
 	}
 
-	void GameplayView::createUIElements()
-	{
-		gameplay_image = new ImageView();
-	}
+	void GameplayView::update() { background_image->update(); }
 
-	void GameplayView::initializeImage()
-	{
-		gameplay_image->initialize(getGameplayTexturePath(), gameplay_controller);
-	}
-
-	sf::String GameplayView::getGameplayTexturePath()
-	{
-		return Config::background_texture_path;
-	}
-
-	void GameplayView::update() 
-	{
-		gameplay_image->update();
-	}
-
-	void GameplayView::render() 
-	{ 
-		gameplay_image->render();
-	}
-
-	void GameplayView::destroy()
-	{
-		delete(gameplay_image);
-	}
+	void GameplayView::render() { background_image->render(); }
 }

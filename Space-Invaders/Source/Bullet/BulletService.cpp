@@ -3,7 +3,7 @@
 #include "../../Header/Bullet/BulletConfig.h"
 #include "../../Header/Bullet/Controllers/FrostBulletController.h"
 #include "../../Header/Bullet/Controllers/LaserBulletController.h"
-#include "../../Header/Bullet/Controllers/TorpedoeController.h"
+#include "../../Header/Bullet/Controllers/TorpedoController.h"
 
 namespace Bullet
 {

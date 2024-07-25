@@ -1,17 +1,17 @@
-#include "../../Header/Bullet/BulletView.h"
-#include "../../Header/Bullet/BulletController.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Global/Config.h"
-#include "../../Header/Bullet/BulletConfig.h"
+#include "../../header/Bullet/BulletView.h"
+#include "../../header/Bullet/BulletController.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Global/Config.h"
+#include "../../header/Bullet/BulletConfig.h"
 
 namespace Bullet
 {
 	using namespace Global;
 	using namespace UI::UIElement;
 
-	BulletView::BulletView() {  }
+	BulletView::BulletView() { createUIElements(); }
 
-	BulletView::~BulletView() { }
+	BulletView::~BulletView() { destroy(); }
 
 	void BulletView::initialize(BulletController* controller)
 	{
@@ -26,12 +26,12 @@ namespace Bullet
 
 	void BulletView::initializeImage()
 	{
-		bullet_image->initialize(getBulletTexturePath(), bullet_sprite_width, bullet_sprite_height, bullet_controller->getBulletPosition());
+		bullet_image->initialize(getBulletTexturePath(), bullet_sprite_width, bullet_sprite_height, bullet_controller->getProjectilePosition());
 	}
 
 	void BulletView::update()
 	{
-		bullet_image->setPosition(bullet_controller->getBulletPosition());
+		bullet_image->setPosition(bullet_controller->getProjectilePosition());
 		bullet_image->update();
 	}
 
@@ -57,7 +57,6 @@ namespace Bullet
 
 	void BulletView::destroy()
 	{
-		delete(bullet_image);
+		delete (bullet_image);
 	}
-
 }

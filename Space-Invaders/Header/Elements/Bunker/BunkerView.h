@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/UI/UIElement/ImageView.h"
+#include "../../header/UI/UIElement/ImageView.h"
 
 namespace Element
 {
@@ -19,7 +19,6 @@ namespace Element
 
             void createUIElements();
             void initializeImage();
-            sf::String getBunkerTexturePath();
 
             void destroy();
 

@@ -1,28 +1,30 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../../Header/UI/UIElement/ImageView.h"
+#include "../../header/UI/UIElement/ImageView.h"
 
 namespace Gameplay
 {
+    class GameplayController;
 
-	class GameplayView {
-	
-	private:
-		UI::UIElement::ImageView* gameplay_image;
+    class GameplayView
+    {
+    private:
+        sf::RenderWindow* game_window;
+        sf::Texture background_texture;
+        sf::Sprite background_sprite;
+        const float background_alpha = 150.f;
 
-		void createUIElements();
-		void initializeImage();
-		sf::String getGameplayTexturePath();
+        GameplayController* gameplay_controller;
+        UI::UIElement::ImageView* background_image;
 
-		void destroy();
+        void initializeBackgroundImage();
 
-	public:
-		GameplayView();
-		~GameplayView();
+    public:
+        GameplayView();
+        ~GameplayView();
 
-		void initialize();
-		void update();
-		void render();
-
-	};
+        void initialize();
+        void update();
+        void render();
+    };
 }

@@ -3,12 +3,13 @@
 
 namespace Enemy
 {
-
 	EnemyModel::EnemyModel(EnemyType type) {
+		
 		enemy_type = type;
+	
 	}
 
-	EnemyModel::~EnemyModel() {}
+	EnemyModel::~EnemyModel() { }
 
 	void EnemyModel::initialize()
 	{
@@ -17,13 +18,25 @@ namespace Enemy
 		enemy_position = reference_position;
 	}
 
-	sf::Vector2f EnemyModel::getEnemyPosition() { return enemy_position; }
+	sf::Vector2f EnemyModel::getEnemyPosition()
+	{
+		return enemy_position;
+	}
 
-	void EnemyModel::setEnemyPosition(sf::Vector2f position) { enemy_position = position; }
+	void EnemyModel::setEnemyPosition(sf::Vector2f position)
+	{
+		enemy_position = position;
+	}
 
-	sf::Vector2f EnemyModel::getReferencePosition() { return reference_position; }
+	sf::Vector2f EnemyModel::getReferencePosition()
+	{
+		return reference_position;
+	}
 
-	void EnemyModel::setReferencePosition(sf::Vector2f position) { reference_position = position; }
+	void EnemyModel::setReferencePosition(sf::Vector2f position)
+	{
+		reference_position = position;
+	}
 
 	EnemyState EnemyModel::getEnemyState()
 	{
@@ -45,21 +58,14 @@ namespace Enemy
 		enemy_type = type;
 	}
 
-	MovementDirection EnemyModel::getMovementDirection() { return movement_direction; }
 
-	void EnemyModel::setMovementDirection(MovementDirection direction) { movement_direction = direction; }
-	
-	
+	MovementDirection EnemyModel::getMovementDirection()
+	{
+		return movement_direction;
+	}
 
+	void EnemyModel::setMovementDirection(MovementDirection direction)
+	{
+		movement_direction = direction;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,6 @@
 #pragma once
+#include "../../header/UI/UIElement/ImageView.h"
 #include <functional>
-#include "../../Header/UI/UIElement/ImageView.h"
-
-
 
 namespace UI
 {
@@ -36,3 +34,4 @@ namespace UI
 			void registerCallbackFuntion(CallbackFunction button_callback);
 		};
 	}
+}

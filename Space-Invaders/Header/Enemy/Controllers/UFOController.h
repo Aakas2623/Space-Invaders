@@ -1,6 +1,6 @@
 #pragma once
-#include "../../Header/Enemy/EnemyController.h"
-#include "../../Header/Powerups/PowerupConfig.h"
+#include "../../header/Enemy/EnemyController.h"
+#include "../../header/Powerup/PowerupConfig.h"
 
 namespace Enemy
 {
@@ -9,7 +9,7 @@ namespace Enemy
         class UFOController : public EnemyController
         {
         private:
-            
+
             void move() override;
             void moveLeft();
             void moveRight();

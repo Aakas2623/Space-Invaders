@@ -1,17 +1,19 @@
-#include "../../Header/Enemy/EnemyView.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Enemy/EnemyController.h"
-#include"../../Header/Enemy/EnemyConfig.h"
-#include "../../Header/Global/Config.h"
+#include "../../header/Enemy/EnemyView.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Global/Config.h"
+#include "../../header/Graphic/GraphicService.h"
+#include "../../header/Enemy/EnemyController.h"
+#include "../../header/Enemy/EnemyConfig.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Graphic;
 	using namespace UI::UIElement;
-	
-	EnemyView::EnemyView() { }
 
-	EnemyView::~EnemyView() { }
+	EnemyView::EnemyView() { createUIElements(); }
+
+	EnemyView::~EnemyView() { destroy(); }
 
 	void EnemyView::initialize(EnemyController* controller)
 	{
@@ -47,11 +49,11 @@ namespace Enemy
 		case::Enemy::EnemyType::ZAPPER:
 			return Config::zapper_texture_path;
 
-		case::Enemy::EnemyType::SUBZERO:
-			return Config::subzero_texture_path;
-
 		case::Enemy::EnemyType::THUNDER_SNAKE:
 			return Config::thunder_snake_texture_path;
+
+		case::Enemy::EnemyType::SUBZERO:
+			return Config::subzero_texture_path;
 
 		case::Enemy::EnemyType::UFO:
 			return Config::ufo_texture_path;
@@ -60,6 +62,6 @@ namespace Enemy
 
 	void EnemyView::destroy()
 	{
-		delete(enemy_image);
+		delete (enemy_image);
 	}
 }

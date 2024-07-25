@@ -1,164 +1,121 @@
 #include "../../Header/Enemy/Controllers/ThunderSnakeController.h"
+#include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyModel.h"
-#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
-
+#include "../../Header/Bullet/BulletConfig.h"
 
 namespace Enemy
 {
-    using namespace Global;
-    using namespace Bullet;
+	using namespace Global;
+	using namespace Time;
+	using namespace Bullet;
 
-    namespace Controller
-    {
-        ThunderSnakeController::ThunderSnakeController(EnemyType type) : EnemyController(type) { }
+	namespace Controller
+	{
+		ThunderSnakeController::ThunderSnakeController(EnemyType type) : EnemyController(type) { }
 
-        ThunderSnakeController::~ThunderSnakeController() { }
+		ThunderSnakeController::~ThunderSnakeController() { }
 
-        void ThunderSnakeController::initialize()
-        {
-            EnemyController::initialize(); // init the base controller
-            enemy_model->setMovementDirection(MovementDirection::DOWN);
-            rate_of_fire = thunder_snake_rate_of_fire;
-        }
+		void ThunderSnakeController::initialize()
+		{
+			EnemyController::initialize();
+			enemy_model->setMovementDirection(getInitialMovementDirection());
+			enemy_model->horizontal_movement_speed = thunder_snake_horizontal_movement_speed;
+		}
 
-        // Method for moving the Zapper enemy
-        void ThunderSnakeController::move()
-        {
-            // Switch statement based on the movement direction of the enemy
-            switch (enemy_model->getMovementDirection())
-            {
-                // If the movement direction is LEFT
-            case::Enemy::MovementDirection::LEFT:
-                moveLeft();
-                break;
+		MovementDirection ThunderSnakeController::getInitialMovementDirection()
+		{
+			static MovementDirection initial_direction = MovementDirection::RIGHT;
 
-                // If the movement direction is RIGHT
-            case::Enemy::MovementDirection::RIGHT:
-                moveRight();
-                break;
+			switch (initial_direction)
+			{
+			case Enemy::MovementDirection::LEFT:
+				initial_direction = MovementDirection::RIGHT;
+				return initial_direction;
 
-                // If the movement direction is DOWN
-            case::Enemy::MovementDirection::DOWN:
-                moveDown();
-                break;
-            }
-        }
+			case Enemy::MovementDirection::RIGHT:
+				initial_direction = MovementDirection::LEFT;
+				return initial_direction;
+			}
+		}
 
-        // Method for moving the Zapper enemy left
-        void ThunderSnakeController::moveLeft()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+		void ThunderSnakeController::move()
+		{
+			switch (enemy_model->getMovementDirection())
+			{
+			case::Enemy::MovementDirection::LEFT:
+				moveLeft();
+				break;
 
-            // Update the position to move left
-            currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			case::Enemy::MovementDirection::RIGHT:
+				moveRight();
+				break;
 
-            // Check if the enemy reached the leftmost position
-            if (currentPosition.x <= enemy_model->left_most_position.x)
-            {
-                // Set movement direction to DOWN and update reference position
-                enemy_model->setMovementDirection(MovementDirection::DOWN);
-                enemy_model->setReferencePosition(currentPosition);
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
+			case::Enemy::MovementDirection::LEFT_DOWN:
+				moveDiagonalLeft();
+				break;
 
-        // Method for moving the Zapper enemy right
-        void ThunderSnakeController::moveRight()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			case::Enemy::MovementDirection::RIGHT_DOWN:
+				moveDiagonalRight();
+				break;
+			}
+		}
 
-            // Update the position to move right
-            currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		void ThunderSnakeController::moveLeft()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.x -= enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			
+			if (currentPosition.x <= enemy_model->left_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::RIGHT_DOWN);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
 
-            // Check if the enemy reached the rightmost position
-            if (currentPosition.x >= enemy_model->right_most_position.x)
-            {
-                // Set movement direction to DOWN and update reference position
-                enemy_model->setMovementDirection(MovementDirection::DOWN);
-                enemy_model->setReferencePosition(currentPosition);
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
+		void ThunderSnakeController::moveRight()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.x += enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-        // Method for moving the enemy down
-        void ThunderSnakeController::moveDown()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			if (currentPosition.x >= enemy_model->right_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::LEFT_DOWN);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
 
-            // Update the position to move down
-            currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		void ThunderSnakeController::moveDiagonalLeft()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.y += enemy_model->vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			currentPosition.x -= enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-            // Check if the enemy reached the reference position plus vertical travel distance
-            if (currentPosition.y >= enemy_model->getReferencePosition().y + vertical_travel_distance)
-            {
-                // Check if the enemy reference position is on the left side
-                if (enemy_model->getReferencePosition().x <= enemy_model->left_most_position.x)
-                {
-                    // Set movement direction to RIGHT
-                    enemy_model->setMovementDirection(MovementDirection::RIGHT);
-                }
-                else
-                {
-                    // Set movement direction to LEFT
-                    enemy_model->setMovementDirection(MovementDirection::LEFT);
-                }
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
+			if (currentPosition.x <= enemy_model->left_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::RIGHT);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
 
-        // Method for moving the enemy up
-        void ThunderSnakeController::moveUp()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+		void ThunderSnakeController::moveDiagonalRight()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.y += enemy_model->vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			currentPosition.x += enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-            // Update the position to move down
-            currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			if (currentPosition.x >= enemy_model->right_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::LEFT);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
 
-            // Check if the enemy reached the reference position plus vertical travel distance
-            if (currentPosition.y >= enemy_model->getReferencePosition().y + vertical_travel_distance)
-            {
-                // Check if the enemy reference position is on the left side
-                if (enemy_model->getReferencePosition().x <= enemy_model->left_most_position.x)
-                {
-                    // Set movement direction to RIGHT
-                    enemy_model->setMovementDirection(MovementDirection::RIGHT);
-                }
-                else
-                {
-                    // Set movement direction to LEFT
-                    enemy_model->setMovementDirection(MovementDirection::LEFT);
-                }
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
-
-        void ThunderSnakeController::fireBullet()
-        {
-            // we spawn the bullet and pass the needed parameters
-            ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
-                enemy_model->getEnemyPosition() + enemy_model->barrel_position_offset,
-                Bullet::MovementDirection::DOWN);
-        }
-    }
+		void ThunderSnakeController::fireBullet()
+		{
+			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::TORPEDO,
+				enemy_model->getEnemyPosition() + enemy_model->barrel_position_offset,
+				Bullet::MovementDirection::DOWN);
+		}
+	}
 }

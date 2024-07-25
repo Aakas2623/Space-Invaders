@@ -1,18 +1,20 @@
 #include "../../header/Elements/Bunker/BunkerView.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Graphic/GraphicService.h"
+#include "../../header/Global/Config.h"
 #include "../../header/Elements/Bunker/BunkerController.h"
-#include "../../Header/Global/Config.h"
 
 namespace Element
 {
 	namespace Bunker
 	{
 		using namespace Global;
+		using namespace Graphic;
 		using namespace UI::UIElement;
 
-		BunkerView::BunkerView() { }
+		BunkerView::BunkerView() { createUIElements(); }
 
-		BunkerView::~BunkerView() { }
+		BunkerView::~BunkerView() { destroy(); }
 
 		void BunkerView::initialize(BunkerController* controller)
 		{
@@ -27,12 +29,11 @@ namespace Element
 
 		void BunkerView::initializeImage()
 		{
-			bunker_image->initialize(getBunkerTexturePath(), bunker_sprite_width, bunker_sprite_height, bunker_controller->getBunkerPosition());
+			bunker_image->initialize(Config::bunker_texture_path, bunker_sprite_width, bunker_sprite_height, bunker_controller->getBunkerPosition());
 		}
 
 		void BunkerView::update()
 		{
-			bunker_image->setPosition(bunker_controller->getBunkerPosition());
 			bunker_image->update();
 		}
 
@@ -41,15 +42,9 @@ namespace Element
 			bunker_image->render();
 		}
 
-		sf::String BunkerView::getBunkerTexturePath()
-		{
-			return Config::bunker_texture_path;	
-		}
-
 		void BunkerView::destroy()
 		{
 			delete(bunker_image);
 		}
-
 	}
 }

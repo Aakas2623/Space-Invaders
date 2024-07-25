@@ -1,15 +1,14 @@
-#include "../../header/Enemy/EnemyController.h"
-#include "../../header/Enemy/EnemyView.h"
-#include "../../header/Enemy/EnemyModel.h"
-#include "../../header/Enemy/EnemyConfig.h"
-#include "../../header/Global/ServiceLocator.h"
-#include "../../header/Bullet/BulletConfig.h"
+#include "../../Header/Enemy/EnemyController.h"
+#include "../../Header/Enemy/EnemyView.h"
+#include "../../Header/Enemy/EnemyModel.h"
+#include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Bullet/BulletConfig.h"
 
 namespace Enemy
 {
 	using namespace Global;
-	using namespace Time;
 	using namespace Bullet;
+
 
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -33,8 +32,8 @@ namespace Enemy
 	void EnemyController::update()
 	{
 		move();
-		updateFireTimer(); //new
-		processBulletFire(); //new
+		updateFireTimer();
+		processBulletFire();
 		enemy_view->update();
 		handleOutOfBounds();
 	}
@@ -46,15 +45,15 @@ namespace Enemy
 
 	void EnemyController::updateFireTimer()
 	{
-		elapsed_fire_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); //update the elapsed duration
+		elapsed_fire_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 
-	void EnemyController::processBulletFire() //if elapsed duration is equal to or more than the amount of time we want to wait until firing than call the fire method.
+	void EnemyController::processBulletFire()
 	{
 		if (elapsed_fire_duration >= rate_of_fire)
 		{
 			fireBullet();
-			elapsed_fire_duration = 0.f; //set elapsed duration back to 0.
+			elapsed_fire_duration = 0.f;
 		}
 	}
 
@@ -78,6 +77,7 @@ namespace Enemy
 			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 		}
 	}
+
 
 	sf::Vector2f EnemyController::getEnemyPosition()
 	{
