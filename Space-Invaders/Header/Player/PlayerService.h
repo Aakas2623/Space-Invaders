@@ -1,11 +1,8 @@
 #pragma once
-#include "../../Header/Player/PlayerController.h"
 
 namespace Player
 {
-
-	enum class PlayerState;
-	//class PlayerController;
+	class PlayerController;
 
 	class PlayerService
 	{
@@ -21,3 +18,4 @@ namespace Player
 		void render();
 	};
 }
+

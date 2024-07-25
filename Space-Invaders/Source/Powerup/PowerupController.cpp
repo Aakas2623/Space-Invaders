@@ -1,7 +1,7 @@
-#include "../../Header/Powerups/PowerupController.h"
-#include "../../Header/Powerups/PowerupModel.h"
-#include "../../Header/Powerups/PowerupView.h"
-#include "../../Header/Global/ServiceLocator.h"
+#include "../../header/Powerup/PowerupController.h"
+#include "../../header/Powerup/PowerupView.h"
+#include "../../header/Powerup/PowerupModel.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace Powerup
 {
@@ -15,27 +15,29 @@ namespace Powerup
 
 	PowerupController::~PowerupController()
 	{
-		delete(powerup_model);
 		delete (powerup_view);
+		delete (powerup_model);
 	}
 
 	void PowerupController::initialize(sf::Vector2f position)
 	{
 		powerup_model->initialize(position);
 		powerup_view->initialize(this);
-
 	}
 
 	void PowerupController::update()
 	{
 		updatePowerupPosition();
 		powerup_view->update();
-		handleOutOfBounds();
 	}
 
 	void PowerupController::render()
 	{
 		powerup_view->render();
+	}
+
+	void PowerupController::onCollected()
+	{
 	}
 
 	void PowerupController::updatePowerupPosition()
@@ -58,11 +60,6 @@ namespace Powerup
 		}
 	}
 
-	void PowerupController::onCollected()
-	{
-
-	}
-
 	sf::Vector2f PowerupController::getCollectiblePosition()
 	{
 		return powerup_model->getPowerupPosition();
@@ -72,7 +69,4 @@ namespace Powerup
 	{
 		return powerup_model->getPowerupType();
 	}
-
-
-
 }

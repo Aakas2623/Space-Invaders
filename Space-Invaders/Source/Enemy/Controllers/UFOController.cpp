@@ -1,102 +1,79 @@
 #include "../../Header/Enemy/Controllers/UFOController.h"
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
+#include "../../Header/Bullet/BulletConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 
 
 namespace Enemy
 {
-    using namespace Global;
-    using namespace Bullet;
+	using namespace Global;
+	using namespace Bullet;
 
-    namespace Controller
-    {
-        UFOController::UFOController(EnemyType type) : EnemyController(type) { }
+	namespace Controller
+	{
+		UFOController::UFOController(EnemyType type) : EnemyController(type) { }
 
-        UFOController::~UFOController() { }
+		UFOController::~UFOController() { }
 
-        void UFOController::initialize()
-        {
-            EnemyController::initialize(); // init the base controller
-        }
+		void UFOController::initialize()
+		{
+			EnemyController::initialize();
+		}
 
-        // Method for moving the Zapper enemy
-        void UFOController::move()
-        {
-            // Switch statement based on the movement direction of the enemy
-            switch (enemy_model->getMovementDirection())
-            {
-                // If the movement direction is LEFT
-            case::Enemy::MovementDirection::LEFT:
-                moveLeft();
-                break;
+		void UFOController::fireBullet()
+		{
+		}
 
-                // If the movement direction is RIGHT
-            case::Enemy::MovementDirection::RIGHT:
-                moveRight();
-                break;
-            }
-        }
+		Powerup::PowerupType UFOController::getRandomPowerupType()
+		{
+			std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-        // Method for moving the Zapper enemy left
-        void UFOController::moveLeft()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			//We add '1'  to OutscalBomb below because enum has a 0 index, making the bomb number 3, we need to add 1 to make it 4 
 
-            // Update the position to move left
-            currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			int random_value = std::rand() % (static_cast<int>(Powerup::PowerupType::OUTSCAL_BOMB) + 1);
+			return static_cast<Powerup::PowerupType>(random_value);
+		}
 
-            // Check if the enemy reached the leftmost position
-            if (currentPosition.x <= enemy_model->left_most_position.x)
-            {
-                // Set movement direction to DOWN and update reference position
-                enemy_model->setMovementDirection(MovementDirection::RIGHT);
-                enemy_model->setReferencePosition(currentPosition);
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
+		void UFOController::move()
+		{
+			switch (enemy_model->getMovementDirection())
+			{
+			case::Enemy::MovementDirection::LEFT:
+				moveLeft();
+				break;
 
-        // Method for moving the Zapper enemy right
-        void UFOController::moveRight()
-        {
-            // Get the current position of the enemy
-            sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			case::Enemy::MovementDirection::RIGHT:
+				moveRight();
+				break;
+			}
 
-            // Update the position to move right
-            currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		}
 
-            // Check if the enemy reached the rightmost position
-            if (currentPosition.x >= enemy_model->right_most_position.x)
-            {
-                // Set movement direction to DOWN and update reference position
-                enemy_model->setMovementDirection(MovementDirection::LEFT);
-                enemy_model->setReferencePosition(currentPosition);
-            }
-            else
-            {
-                // Update the enemy position
-                enemy_model->setEnemyPosition(currentPosition);
-            }
-        }
+		void UFOController::moveLeft()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.x -= enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-        Powerup::PowerupType UFOController::getRandomPowerupType()
-        {
-            std::srand(static_cast<unsigned int>(std::time(nullptr)));
+			if (currentPosition.x <= enemy_model->left_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::RIGHT);
+				enemy_model->setReferencePosition(currentPosition);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
 
-            //We add '1'  to OutscalBomb below because enum has a 0 index, making the bomb number 3, we need to add 1 to make it 4 
+		void UFOController::moveRight()
+		{
+			sf::Vector2f currentPosition = enemy_model->getEnemyPosition();
+			currentPosition.x += enemy_model->horizontal_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-            int random_value = std::rand() % (static_cast<int>(Powerup::PowerupType::OUTSCAL_BOMB) + 1);
-            return static_cast<Powerup::PowerupType>(random_value);
-        }
-
-        void UFOController::fireBullet()
-        {
-           
-        }
-    }
+			if (currentPosition.x >= enemy_model->right_most_position.x)
+			{
+				enemy_model->setMovementDirection(MovementDirection::LEFT);
+				enemy_model->setReferencePosition(currentPosition);
+			}
+			else enemy_model->setEnemyPosition(currentPosition);
+		}
+	}
 }

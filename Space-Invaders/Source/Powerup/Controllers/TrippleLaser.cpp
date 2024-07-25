@@ -1,4 +1,4 @@
-#include "../../Header/Powerups/Controllers/TrippleLaserController.h"
+#include "../../header/Powerup/Controllers/TrippleLaserController.h"
 
 namespace Powerup
 {

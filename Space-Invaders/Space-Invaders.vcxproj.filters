@@ -27,7 +27,7 @@
     <ClCompile Include="Source\Graphic\GraphicService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Event\EventServices.cpp">
+    <ClCompile Include="Source\Event\EventService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Player\PlayerService.cpp">
@@ -66,12 +66,6 @@
     <ClCompile Include="Source\Gameplay\GameplayService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Gameplay\GameplayView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Gameplay\GameplayController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Enemy\Controllers\SubZeroController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,10 +78,10 @@
     <ClCompile Include="Source\Elements\Bunker\BunkerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Elements\Bunker\BunkerModel.cpp">
+    <ClCompile Include="Source\Elements\Bunker\BunkerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Elements\Bunker\BunkerView.cpp">
+    <ClCompile Include="Source\Elements\Bunker\BunkerModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Global\Config.cpp">
@@ -102,49 +96,67 @@
     <ClCompile Include="Source\Bullet\BulletController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Bullet\BulletView.cpp">
+    <ClCompile Include="Source\Bullet\BulletModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Bullet\BulletModel.cpp">
+    <ClCompile Include="Source\Bullet\BulletView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Bullet\Controllers\LaserBulletController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Bullet\Controllers\TorpedoeController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Bullet\Controllers\FrostBulletController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Powerups\PowerupService.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\PowerupController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\PowerupModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\PowerupView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\Controllers\OutscalBombController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\Controllers\ShieldController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\Controllers\RapidFireController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Powerups\Controllers\TrippleLaserController.cpp">
+    <ClCompile Include="Source\Bullet\Controllers\TorpedoController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Enemy\Controllers\ThunderSnakeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Powerup\PowerupService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\PowerupController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\PowerupModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\PowerupView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\Controllers\ShieldController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\Controllers\TrippleLaser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\Controllers\RapidFireController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Powerup\Controllers\OutscalBombController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement\UIView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement\TextView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement\ImageView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement\ButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Gameplay\GameplayView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Gameplay\GameplayController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,43 +197,37 @@
     <ClInclude Include="Header\Enemy\EnemyService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\EnemyModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Enemy\EnemyModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Header\Gameplay\GameplayService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Gameplay\GameplayController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Gameplay\GameplayView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\ZapperController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Enemy\Controllers\ZapperController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Header\Elements\ElementService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Elements\Bunker\BunkerModel.h">
+    <ClInclude Include="Header\Elements\Bunker\BunkerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Elements\Bunker\BunkerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Elements\Bunker\BunkerController.h">
+    <ClInclude Include="Header\Elements\Bunker\BunkerModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Global\Config.h">
@@ -236,62 +242,112 @@
     <ClInclude Include="Header\Bullet\BulletService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header\Bullet\BulletController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Bullet\BulletView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Bullet\BulletModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\Controllers\LaserBulletController.h">
+    <ClInclude Include="Header\Bullet\BulletView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullet\Controllers\TorpedoeController.h">
+    <ClInclude Include="Header\Bullet\BulletConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullet\Controllers\TorpedoController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullet\Controllers\LaserBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Bullet\Controllers\FrostBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Enemy\Controllers\ThunderSnakeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Header\Collectible\ICollectible.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\PowerupConfig.h">
+    <ClInclude Include="Header\Powerup\PowerupConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\PowerupService.h">
+    <ClInclude Include="Header\Powerup\PowerupService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\PowerupController.h">
+    <ClInclude Include="Header\Powerup\PowerupController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\PowerupModel.h">
+    <ClInclude Include="Header\Powerup\PowerupModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\PowerupView.h">
+    <ClInclude Include="Header\Powerup\PowerupView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\Controllers\OutscalBombController.h">
+    <ClInclude Include="Header\Powerup\Controllers\OutscalBombController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\Controllers\ShieldController.h">
+    <ClInclude Include="Header\Powerup\Controllers\TrippleLaserController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\Controllers\RapidFireController.h">
+    <ClInclude Include="Header\Powerup\Controllers\RapidFireController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerups\Controllers\TrippleLaserController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\ThunderSnakeController.h">
+    <ClInclude Include="Header\Powerup\Controllers\ShieldController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\Controllers\UFOController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\UI\Interface\IUIController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\UIView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\TextView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\ImageView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\UI\UIElement\ButtonView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Gameplay\GameplayController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Gameplay\GameplayView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\enemy_ship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\instructions_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\menu_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\outscal_logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\play_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\player_ship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\quit_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\space_invaders_bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\bunker.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

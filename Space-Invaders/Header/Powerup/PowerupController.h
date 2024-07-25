@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Header/Collectible/ICollectible.h"
+#include "../../header/Collectible/ICollectible.h"
 
 namespace Powerup
 {

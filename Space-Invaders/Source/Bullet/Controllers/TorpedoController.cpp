@@ -1,4 +1,4 @@
-#include "../../Header/Bullet/Controllers/TorpedoeController.h"
+#include "../../Header/Bullet/Controllers/TorpedoController.h"
 #include "../../Header/Bullet/BulletModel.h"
 
 namespace Bullet

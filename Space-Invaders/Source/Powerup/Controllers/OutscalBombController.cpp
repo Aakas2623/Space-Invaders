@@ -1,4 +1,4 @@
-#include "../../Header/Powerups/Controllers/OutscalBombController.h"
+#include "../../header/Powerup/Controllers/OutscalBombController.h"
 
 namespace Powerup
 {

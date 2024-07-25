@@ -1,11 +1,11 @@
-#include "../../Header/Powerups/PowerupService.h"
-#include "../../Header/Powerups/PowerupController.h"
-#include "../../Header/Powerups/PowerupConfig.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Powerups/Controllers/OutscalBombController.h"
-#include "../../Header/Powerups/Controllers/RapidFireController.h"
-#include "../../Header/Powerups/Controllers/ShieldController.h"
-#include "../../Header/Powerups/Controllers/TrippleLaserController.h"
+#include "../../header/Powerup/PowerupService.h"
+#include "../../header/Powerup/PowerupController.h"
+#include "../../header/Powerup/PowerupConfig.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Powerup/Controllers/OutscalBombController.h"
+#include "../../header/Powerup/Controllers/RapidFireController.h"
+#include "../../header/Powerup/Controllers/ShieldController.h"
+#include "../../header/Powerup/Controllers/TrippleLaserController.h"
 
 namespace Powerup
 {
@@ -21,15 +21,15 @@ namespace Powerup
 
 	void PowerupService::update()
 	{
-		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->update(); //loop and update
+		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->update();
 	}
 
 	void PowerupService::render()
 	{
-		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->render(); //loop and render
+		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->render();
 	}
 
-	PowerupController* PowerupService::createPowerup(PowerupType powerup_type) //creates and returns a pointer to the created powerup
+	PowerupController* PowerupService::createPowerup(PowerupType powerup_type)
 	{
 		switch (powerup_type)
 		{
@@ -47,7 +47,7 @@ namespace Powerup
 		}
 	}
 
-	PowerupController* PowerupService::spawnPowerup(PowerupType powerup_type, sf::Vector2f position) //initialize a powerup
+	PowerupController* PowerupService::spawnPowerup(PowerupType powerup_type, sf::Vector2f position)
 	{
 		PowerupController* powerup_controller = createPowerup(powerup_type);
 
@@ -56,7 +56,7 @@ namespace Powerup
 		return powerup_controller;
 	}
 
-	void PowerupService::destroyPowerup(PowerupController* powerup_controller) //destroy specific powerup
+	void PowerupService::destroyPowerup(PowerupController* powerup_controller)
 	{
 		powerup_list.erase(std::remove(powerup_list.begin(), powerup_list.end(), powerup_controller), powerup_list.end());
 		delete(powerup_controller);

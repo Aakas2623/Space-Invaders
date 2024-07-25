@@ -1,16 +1,13 @@
-#include "../../Header/Powerups/PowerupModel.h"
+#include "../../header/Powerup/PowerupModel.h"
 
 namespace Powerup
 {
-
 	PowerupModel::PowerupModel(PowerupType type)
 	{
 		powerup_type = type;
 	}
-	PowerupModel::~PowerupModel()
-	{
-		
-	}
+
+	PowerupModel::~PowerupModel() { }
 
 	void PowerupModel::initialize(sf::Vector2f position)
 	{
