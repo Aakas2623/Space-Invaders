@@ -66,10 +66,10 @@
     <ClCompile Include="Source\Gameplay\GameplayService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy\Controllers\SubZeroController.cpp">
+    <ClCompile Include="Source\Enemy\Controller\SubZeroController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy\Controllers\ZapperController.cpp">
+    <ClCompile Include="Source\Enemy\Controller\ZapperController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Elements\ElementService.cpp">
@@ -111,7 +111,7 @@
     <ClCompile Include="Source\Bullet\Controllers\TorpedoController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy\Controllers\ThunderSnakeController.cpp">
+    <ClCompile Include="Source\Enemy\Controller\ThunderSnakeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Powerup\PowerupService.cpp">
@@ -126,19 +126,19 @@
     <ClCompile Include="Source\Powerup\PowerupView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Powerup\Controllers\ShieldController.cpp">
+    <ClCompile Include="Source\Powerup\Controller\ShieldController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Powerup\Controllers\TrippleLaser.cpp">
+    <ClCompile Include="Source\Powerup\Controller\TrippleLaser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Powerup\Controllers\RapidFireController.cpp">
+    <ClCompile Include="Source\Powerup\Controller\RapidFireController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Powerup\Controllers\OutscalBombController.cpp">
+    <ClCompile Include="Source\Powerup\Controller\OutscalBombController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp">
+    <ClCompile Include="Source\Enemy\Controller\UFOController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\UI\UIElement\UIView.cpp">
@@ -157,6 +157,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Gameplay\GameplayController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bullet\BulletConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision\CollisionService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision\ICollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -212,10 +221,10 @@
     <ClInclude Include="Header\Enemy\EnemyConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\ZapperController.h">
+    <ClInclude Include="Header\Enemy\Controller\ZapperController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h">
+    <ClInclude Include="Header\Enemy\Controller\SubZeroController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Elements\ElementService.h">
@@ -263,7 +272,7 @@
     <ClInclude Include="Header\Bullet\Controllers\FrostBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\ThunderSnakeController.h">
+    <ClInclude Include="Header\Enemy\Controller\ThunderSnakeController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Collectible\ICollectible.h">
@@ -284,19 +293,19 @@
     <ClInclude Include="Header\Powerup\PowerupView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerup\Controllers\OutscalBombController.h">
+    <ClInclude Include="Header\Powerup\Controller\OutscalBombController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerup\Controllers\TrippleLaserController.h">
+    <ClInclude Include="Header\Powerup\Controller\TrippleLaserController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerup\Controllers\RapidFireController.h">
+    <ClInclude Include="Header\Powerup\Controller\RapidFireController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Powerup\Controllers\ShieldController.h">
+    <ClInclude Include="Header\Powerup\Controller\ShieldController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\UFOController.h">
+    <ClInclude Include="Header\Enemy\Controller\UFOController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\UI\Interface\IUIController.h">
@@ -318,6 +327,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Gameplay\GameplayView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Collision\CollisionService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Entity\EntityConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Collision\ICollider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

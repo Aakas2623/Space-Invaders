@@ -60,6 +60,11 @@ namespace Powerup
 		}
 	}
 
+	const sf::Sprite& PowerupView::getPowerupSprite()
+	{
+		// TODO: insert return statement here
+	}
+
 	void PowerupView::destroy()
 	{
 		delete(powerup_image);

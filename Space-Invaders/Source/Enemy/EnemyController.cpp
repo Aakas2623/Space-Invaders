@@ -1,21 +1,28 @@
-#include "../../Header/Enemy/EnemyController.h"
-#include "../../Header/Enemy/EnemyView.h"
-#include "../../Header/Enemy/EnemyModel.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Bullet/BulletConfig.h"
-#include "../../Header/Entity/Entity.h"
+#include "../../header/Enemy/EnemyController.h"
+#include "../../header/Enemy/EnemyView.h"
+#include "../../header/Enemy/EnemyModel.h"
+#include "../../header/Enemy/EnemyConfig.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Bullet/BulletConfig.h"
+#include "../../header/Entity/EntityConfig.h"
+#include "../../header/Bullet/BulletController.h"
+#include "../../header/Player/PlayerController.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Time;
 	using namespace Bullet;
+	using namespace Collision;
 	using namespace Entity;
+	using namespace Player;
+	using namespace Sound;
 
-
-	EnemyController::EnemyController(EnemyType type, EntityType owner_type)
+	EnemyController::EnemyController(EnemyType type)
 	{
 		enemy_view = new EnemyView();
-		enemy_model = new EnemyModel(type, owner_type);
+		enemy_model = new EnemyModel(type);
 	}
 
 	EnemyController::~EnemyController()
@@ -37,7 +44,6 @@ namespace Enemy
 		updateFireTimer();
 		processBulletFire();
 		enemy_view->update();
-		handleOutOfBounds();
 	}
 
 	void EnemyController::render()
@@ -68,19 +74,6 @@ namespace Enemy
 		return sf::Vector2f(x_position, y_position);
 	}
 
-	void EnemyController::handleOutOfBounds()
-	{
-		sf::Vector2f enemyPosition = getEnemyPosition();
-		sf::Vector2u windowSize = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
-
-		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
-			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
-		{
-			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
-		}
-	}
-
-
 	sf::Vector2f EnemyController::getEnemyPosition()
 	{
 		return enemy_model->getEnemyPosition();
@@ -96,8 +89,30 @@ namespace Enemy
 		return enemy_model->getEnemyType();
 	}
 
-	EntityType EnemyController::getOwnerEntityType()
+	const sf::Sprite& EnemyController::getColliderSprite()
 	{
-		return EntityType();
+		return enemy_view->getEnemySprite();
+	}
+
+	void EnemyController::onCollision(ICollider* other_collider)
+	{
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+		{
+			destroy();
+			return;
+		}
+
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+		}
+	}
+
+	void EnemyController::destroy()
+	{
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 }

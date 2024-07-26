@@ -18,6 +18,8 @@ namespace Powerup
         void createUIElements();
         void initializeImage();
         sf::String getPowerupTexturePath();
+        const sf::Sprite& getPowerupSprite();
+
 
         void destroy();
 
