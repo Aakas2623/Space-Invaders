@@ -12,3 +12,4 @@ namespace Collision
 
 	CollisionState ICollider::getCollisionState() { return collision_state; }
 }
+

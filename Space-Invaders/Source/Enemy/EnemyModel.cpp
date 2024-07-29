@@ -1,15 +1,12 @@
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
-#include "../../Header/Entity/Entity.h"
 
 namespace Enemy
 {
-	using namespace Entity;
-
-	EnemyModel::EnemyModel(EnemyType type, EntityType col) {
+	EnemyModel::EnemyModel(EnemyType type) {
 		
 		enemy_type = type;
-		owner_type = col;
+		entity_type = Entity::EntityType::ENEMY;
 	}
 
 	EnemyModel::~EnemyModel() { }
@@ -72,8 +69,8 @@ namespace Enemy
 		movement_direction = direction;
 	}
 
-	EntityType EnemyModel::getOwnerEntityType()
+	Entity::EntityType EnemyModel::getEntityType()
 	{
-		return EntityType();
+		return entity_type;
 	}
 }

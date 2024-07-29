@@ -16,7 +16,7 @@ namespace Enemy
 	using namespace Controller;
 	using namespace Collision;
 
-	EnemyService::EnemyService() { std::srand(static_cast<unsigned>(std::time(nullptr))); }
+	EnemyService::EnemyService() { std::srand(static_cast<unsigned>(std::time(nullptr)));}
 
 	EnemyService::~EnemyService() { destroy(); }
 
@@ -56,6 +56,12 @@ namespace Enemy
 		}
 	}
 
+	EnemyType EnemyService::getRandomEnemyType()
+	{
+		int randomType = std::rand() % 4; 
+		return static_cast<Enemy::EnemyType>(randomType);
+	}
+
 	EnemyController* EnemyService::spawnEnemy()
 	{
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
@@ -66,11 +72,6 @@ namespace Enemy
 		return enemy_controller;
 	}
 
-	EnemyType EnemyService::getRandomEnemyType()
-	{
-		int random_value = std::rand() % (static_cast<int>(Enemy::EnemyType::UFO) + 1);
-		return static_cast<Enemy::EnemyType>(random_value);
-	}
 
 	EnemyController* EnemyService::createEnemy(EnemyType enemy_type)
 	{

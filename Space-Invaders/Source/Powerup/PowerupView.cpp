@@ -60,9 +60,9 @@ namespace Powerup
 		}
 	}
 
-	const sf::Sprite& PowerupView::getPowerupSprite()
-	{
-		// TODO: insert return statement here
+	const sf::Sprite& PowerupView::getPowerupSprite() 
+	{ 
+		return powerup_image->getSprite();
 	}
 
 	void PowerupView::destroy()

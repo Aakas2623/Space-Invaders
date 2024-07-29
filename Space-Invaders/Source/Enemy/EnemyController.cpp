@@ -12,12 +12,12 @@
 namespace Enemy
 {
 	using namespace Global;
-	using namespace Time;
 	using namespace Bullet;
 	using namespace Collision;
 	using namespace Entity;
 	using namespace Player;
 	using namespace Sound;
+
 
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -113,6 +113,7 @@ namespace Enemy
 
 	void EnemyController::destroy()
 	{
+		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
 		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 }

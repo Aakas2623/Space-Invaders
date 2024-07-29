@@ -37,12 +37,14 @@ namespace Player
         void processBulletFire();
         void FireBullet(bool b_tripple_laser = false);
         void FireBullet(sf::Vector2f position);
-
+        
         void updatePowerupDuration();
-
-        void disableShield();
-        void disableRapidFire();
+       
+        void disableShield();   
+        void disableRapidFire();    
         void disableTrippleLaser();
+
+    
 
     public:
         PlayerController();
@@ -54,6 +56,10 @@ namespace Player
 
         void reset();
 
+        void decreasePlayerLive();
+        inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
+        
+        
         void enableShield();
         void enableRapidFire();
         void enableTrippleLaser();

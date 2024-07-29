@@ -1,69 +1,63 @@
 #pragma once
-#include "../../Header/Graphic/GraphicService.h"
-#include "../../Header/Event/EventService.h"
-#include "../../Header/Player/PlayerService.h"
-#include "../../Header/Time/TimeService.h"
-#include "../../Header/UI/UIService.h"
-#include "../../Header/Enemy/EnemyService.h"
-#include "../../Header/Gameplay/GameplayService.h"
-#include "../../Header/Elements/ElementService.h"
-#include "../../Header/Sound/SoundService.h"
-#include "../../Header/Bullet/BulletService.h"
-#include "../../Header/Powerup/PowerupService.h"
+#include "../../header/Graphics/GraphicService.h"
+#include "../../header/Event/EventService.h"
+#include "../../header/UI/UIService.h"
+#include "../../header/Player/PlayerService.h"
+#include "../../header/Time/TimeService.h"
+#include "../../header/Enemy/EnemyService.h"
+#include "../../header/Gameplay/GameplayService.h"
+#include "../../header/Elements/ElementService.h"
+#include "../../header/Bullet/BulletService.h"
+#include "../../header/Powerup/PowerupService.h"
+#include "../../header/Sound/SoundService.h"
+#include "../../header/Collision/CollisionService.h"
 
-// ServiceLocator Class Summary: This class manages access to various services in the application.
-// include relevant headers files
 
 namespace Global
 {
-
     class ServiceLocator
     {
-        
-       
     private:
-        // Private Attributes:
-        Graphic::GraphicService* graphic_service;
         Event::EventService* event_service;
-        Player::PlayerService* player_service;
-        Time::TimeService* time_service;
+        Graphics::GraphicService* graphic_service;
         UI::UIService* ui_service;
-        Enemy::EnemyService* enemy_service;
+        Time::TimeService* time_service;
         Gameplay::GameplayService* gameplay_service;
+        Player::PlayerService* player_service;
+        Enemy::EnemyService* enemy_service;
         Element::ElementService* element_service;
-        Sound::SoundService* sound_service;
         Bullet::BulletService* bullet_service;
         Powerup::PowerupService* powerup_service;
+        Sound::SoundService* sound_service;
+        Collision::CollisionService* collision_service;
 
-        // Private Constructor and Destructor:
+
         ServiceLocator();
-        // Constructor for initializing the ServiceLocator.
-        ~ServiceLocator(); 	// Destructor for cleaning up resources upon object deletion.
+        ~ServiceLocator();
 
-        // Private Methods:
-        void createServices(); 			// Creates instances of all services.
-        void clearAllServices(); 		//	Deletes and deallocates memory for all services.
+        void createServices();
+        void clearAllServices();
 
     public:
-        // Public Methods:
-        static ServiceLocator* getInstance(); 			// Provides a method to access the unique ServiceLocator instance (object).
-        void initialize(); 			//	Initializes the ServiceLocator.
-        void update(); 				//	Updates all services.
-        void render(); 				//	Renders using the services.
+        static ServiceLocator* getInstance();
 
-        // Methods to Get Specific Services: 
-        Graphic::GraphicService* getGraphicService();
+        void initialize();
+        void update();
+        void render();
+
         Event::EventService* getEventService();
-        Player::PlayerService* getPlayerService();
-        Time::TimeService* getTimeService();
+        Graphics::GraphicService* getGraphicService();
         UI::UIService* getUIService();
-        Enemy::EnemyService* getEnemyService();
+        Time::TimeService* getTimeService();
         Gameplay::GameplayService* getGameplayService();
+        Player::PlayerService* getPlayerService();
+        Enemy::EnemyService* getEnemyService();
         Element::ElementService* getElementService();
-        Sound::SoundService* getSoundService();
         Bullet::BulletService* getBulletService();
         Powerup::PowerupService* getPowerupService();
-        // Utility Method:
-        void deleteServiceLocator();    // Delete the ServiceLocator instance
+        Sound::SoundService* getSoundService();
+        Collision::CollisionService* getCollisionService();
+
+        
     };
 }

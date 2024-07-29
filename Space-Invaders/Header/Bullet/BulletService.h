@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
 #include "SFML/System/Vector2.hpp"
-#include "../../Header/Projectile/IProjectile.h"
 #include "../../header/Entity/EntityConfig.h"
+#include "../../header/Projectile/IProjectile.h"
 
 namespace Bullet
 {
+	
 	class BulletController;
 	enum class BulletType;
 	enum class MovementDirection;
@@ -20,8 +21,8 @@ namespace Bullet
 
 		bool isValidBullet(int index_i, std::vector<Projectile::IProjectile*>& bullet_list);
 		void destroyFlaggedBullets();
-
 		void destroy();
+
 
 	public:
 		BulletService();

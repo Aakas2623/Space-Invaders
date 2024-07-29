@@ -5,7 +5,7 @@
 
 namespace Powerup
 {
-
+	
 	class PowerupController;
 	enum class PowerupType;
 	enum class MovementDirection;

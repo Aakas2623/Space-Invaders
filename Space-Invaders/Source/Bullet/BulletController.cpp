@@ -1,10 +1,10 @@
-#include "../../Header/Bullet/BulletController.h"
-#include "../../Header/Bullet/BulletView.h"
-#include "../../Header/Bullet/BulletModel.h"
-#include "../../Header/Bullet/BulletConfig.h"
-#include "../../Header/Global/ServiceLocator.h"
-#include "../../Header/Player/PlayerController.h"
-#include "../../Header/Enemy/EnemyController.h"
+#include "../../header/Bullet/BulletController.h"
+#include "../../header/Bullet/BulletView.h"
+#include "../../header/Bullet/BulletModel.h"
+#include "../../header/Bullet/BulletConfig.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Player/PlayerController.h"
+#include "../../header/Enemy/EnemyController.h"
 #include "../../header/Elements/Bunker/BunkerController.h"
 
 namespace Bullet
@@ -37,7 +37,6 @@ namespace Bullet
 	{
 		updateProjectilePosition();
 		bullet_view->update();
-		handleOutOfBounds();
 	}
 
 	void BulletController::render()
@@ -45,19 +44,6 @@ namespace Bullet
 		bullet_view->render();
 	}
 
-	void BulletController::updateProjectilePosition()
-	{
-		switch (bullet_model->getMovementDirection())
-		{
-		case::Bullet::MovementDirection::UP:
-			moveUp();
-			break;
-
-		case::Bullet::MovementDirection::DOWN:
-			moveDown();
-			break;
-		}
-	}
 
 	void BulletController::moveUp()
 	{
@@ -70,9 +56,7 @@ namespace Bullet
 	void BulletController::moveDown()
 	{
 		sf::Vector2f currentPosition = bullet_model->getBulletPosition();
-
 		currentPosition.y += bullet_model->getMovementSpeed() * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
 		bullet_model->setBulletPosition(currentPosition);
 	}
 
@@ -87,6 +71,7 @@ namespace Bullet
 			ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 		}
 	}
+
 
 	sf::Vector2f BulletController::getProjectilePosition()
 	{
@@ -116,11 +101,25 @@ namespace Bullet
 		processBulletCollision(other_collider);
 	}
 
+	void BulletController::updateProjectilePosition()
+	{
+		switch (bullet_model->getMovementDirection())
+		{
+		case::Bullet::MovementDirection::UP:
+			moveUp();
+			break;
+
+		case::Bullet::MovementDirection::DOWN:
+			moveDown();
+			break;
+		}
+	}
+
 	void BulletController::processBulletCollision(ICollider* other_collider)
 	{
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 
-		if (bullet_controller)
+		if (bullet_controller) 
 			ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 	}
 
@@ -148,7 +147,7 @@ namespace Bullet
 	{
 		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
 
-		if (bunker_controller)
+		if (bunker_controller) 
 			ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 	}
 }

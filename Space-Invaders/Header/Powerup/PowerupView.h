@@ -18,8 +18,6 @@ namespace Powerup
         void createUIElements();
         void initializeImage();
         sf::String getPowerupTexturePath();
-        const sf::Sprite& getPowerupSprite();
-
 
         void destroy();
 
@@ -30,5 +28,7 @@ namespace Powerup
         void initialize(PowerupController* controller);
         void update();
         void render();
+
+        const sf::Sprite& getPowerupSprite();
     };
 }

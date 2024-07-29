@@ -13,6 +13,7 @@ namespace Powerup
 	using namespace Global;
 	using namespace Collision;
 	using namespace Controller;
+	using namespace Collectible;
 
 	PowerupService::PowerupService() { }
 
@@ -22,7 +23,7 @@ namespace Powerup
 
 	void PowerupService::update()
 	{
-		for (Collectible::ICollectible* powerup : powerup_list)
+		for (Collectible::ICollectible* powerup : powerup_list) 
 			powerup->update();
 
 		destroyFlaggedPowerup();

@@ -1,16 +1,16 @@
-#include "../../Header/Bullet/BulletService.h"
-#include "../../Header/Bullet/BulletController.h"
-#include "../../Header/Bullet/BulletConfig.h"
-#include "../../Header/Bullet/Controllers/FrostBulletController.h"
-#include "../../Header/Bullet/Controllers/LaserBulletController.h"
+#include "../../header/Bullet/BulletService.h"
+#include "../../header/Bullet/BulletController.h"
+#include "../../header/Bullet/BulletConfig.h"
+#include "../../header/Bullet/Controller/FrostBeamController.h"
+#include "../../header/Bullet/Controller/LaserBulletController.h"
+#include "../../header/Bullet/Controller/TorpedoeController.h"
 #include "../../header/Collision/ICollider.h"
-#include "../../Header/Bullet/Controllers/TorpedoController.h"
 #include "../../header/Global/ServiceLocator.h"
 
 namespace Bullet
 {
 	using namespace Controller;
-	using namespace Projectile;
+	using namespace Entity;
 	using namespace Global;
 	using namespace Collision;
 
@@ -18,7 +18,7 @@ namespace Bullet
 
 	BulletService::~BulletService() { destroy(); }
 
-	void BulletService::initialize()
+	void BulletService::initialize() 
 	{
 		bullet_list.clear();
 		flagged_bullet_list.clear();
@@ -26,17 +26,19 @@ namespace Bullet
 
 	void BulletService::update()
 	{
-		for (int i = 0; i < bullet_list.size(); i++) bullet_list[i]->update();
+		for (Projectile::IProjectile* bullet : bullet_list)
+			bullet->update();
 
 		destroyFlaggedBullets();
 	}
 
 	void BulletService::render()
 	{
-		for (int i = 0; i < bullet_list.size(); i++) bullet_list[i]->render();
+		for (Projectile::IProjectile* bullet : bullet_list)
+			bullet->render();
 	}
 
-	BulletController* BulletService::createBullet(BulletType bullet_type, Entity::EntityType owner_type)
+	BulletController* BulletService::createBullet(BulletType bullet_type, EntityType owner_type)
 	{
 		switch (bullet_type)
 		{
@@ -44,10 +46,10 @@ namespace Bullet
 			return new LaserBulletController(Bullet::BulletType::LASER_BULLET, owner_type);
 
 		case::Bullet::BulletType::FROST_BULLET:
-			return new FrostBulletController(Bullet::BulletType::FROST_BULLET, owner_type);
+			return new FrostBeamController(Bullet::BulletType::FROST_BULLET, owner_type);
 
 		case::Bullet::BulletType::TORPEDO:
-			return new TorpedoController(Bullet::BulletType::TORPEDO, owner_type);
+			return new TorpedoeController(Bullet::BulletType::TORPEDO, owner_type);
 		}
 	}
 
@@ -79,8 +81,8 @@ namespace Bullet
 		}
 		bullet_list.clear();
 	}
-
-	BulletController* BulletService::spawnBullet(BulletType bullet_type, Entity::EntityType owner_type, sf::Vector2f position, MovementDirection direction)
+	
+	BulletController* BulletService::spawnBullet(BulletType bullet_type, EntityType owner_type, sf::Vector2f position, MovementDirection direction)
 	{
 		BulletController* bullet_controller = createBullet(bullet_type, owner_type);
 		bullet_controller->initialize(position, direction);
@@ -92,11 +94,9 @@ namespace Bullet
 
 	void BulletService::destroyBullet(BulletController* bullet_controller)
 	{
-		if (std::find(flagged_bullet_list.begin(), flagged_bullet_list.end(), bullet_controller) == flagged_bullet_list.end())
-		{
-			flagged_bullet_list.push_back(bullet_controller);
-			bullet_list.erase(std::remove(bullet_list.begin(), bullet_list.end(), bullet_controller), bullet_list.end());
-		}
+		dynamic_cast<ICollider*>(bullet_controller)->disableCollision();
+		flagged_bullet_list.push_back(bullet_controller);
+		bullet_list.erase(std::remove(bullet_list.begin(), bullet_list.end(), bullet_controller), bullet_list.end());
 	}
 
 	void BulletService::reset() { destroy(); }
