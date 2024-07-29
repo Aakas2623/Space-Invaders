@@ -171,6 +171,7 @@
     <ClCompile Include="source\Powerup\PowerupService.cpp" />
     <ClCompile Include="source\Powerup\PowerupView.cpp" />
     <ClCompile Include="source\Sound\SoundService.cpp" />
+    <ClCompile Include="Source\UI\SplashScreen\SplashScreenUIController.cpp" />
     <ClCompile Include="source\Time\TimeService.cpp" />
     <ClCompile Include="source\Main\GameService.cpp" />
     <ClCompile Include="source\Graphics\GraphicService.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="header\Powerup\PowerupView.h" />
     <ClInclude Include="header\Projectile\IProjectile.h" />
     <ClInclude Include="header\Sound\SoundService.h" />
+    <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
     <ClInclude Include="header\Time\TimeService.h" />
     <ClInclude Include="header\Main\GameService.h" />
     <ClInclude Include="header\Graphics\GraphicService.h" />
