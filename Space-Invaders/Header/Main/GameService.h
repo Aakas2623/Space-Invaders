@@ -9,8 +9,11 @@ namespace Main
 	enum class GameState
 	{
 		BOOT,
+		SPLASH_SCREEN,
 		MAIN_MENU,
+		INSTRUCTIONS,
 		GAMEPLAY,
+		CREDITS,
 	};
 
 
@@ -24,7 +27,6 @@ namespace Main
 
 		void initialize();
 		void initializeVariables();// Handles game initialization.
-		void destroy();			// Handles cleanup tasks.
 		void showMainMenu();
 
 	public:
