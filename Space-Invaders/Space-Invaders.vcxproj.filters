@@ -53,6 +53,8 @@
     <ClCompile Include="source\UI\UIElement\TextView.cpp" />
     <ClCompile Include="source\UI\UIElement\UIView.cpp" />
     <ClCompile Include="source\UI\UIService.cpp" />
+    <ClCompile Include="Source\UI\SplashScreen\SplashScreenUIController.cpp" />
+    <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Bullet\BulletConfig.h" />
@@ -112,34 +114,7 @@
     <ClInclude Include="header\UI\UIElement\UIView.h" />
     <ClInclude Include="header\Projectile\IProjectile.h" />
     <ClInclude Include="header\Collectible\ICollectible.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\textures\enemy_ship.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\instructions_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\menu_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\outscal_logo.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\play_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\player_ship.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\quit_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\space_invaders_bg.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\bunker.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
+    <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
   </ItemGroup>
 </Project>
