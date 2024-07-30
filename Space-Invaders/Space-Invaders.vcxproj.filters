@@ -55,6 +55,7 @@
     <ClCompile Include="source\UI\UIService.cpp" />
     <ClCompile Include="Source\UI\SplashScreen\SplashScreenUIController.cpp" />
     <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp" />
+    <ClCompile Include="Source\AnimationSysytem\AnimationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Bullet\BulletConfig.h" />
@@ -118,5 +119,6 @@
     <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
     <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystem.h" />
   </ItemGroup>
 </Project>
