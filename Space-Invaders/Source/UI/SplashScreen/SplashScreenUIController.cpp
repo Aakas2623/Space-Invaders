@@ -17,7 +17,7 @@ namespace UI
 
         SplashScreenUIController::SplashScreenUIController()
         {
-            outscal_logo_view = new ImageView();
+            outscal_logo_view = new AnimatedImageView();
         }
 
         SplashScreenUIController::~SplashScreenUIController()
@@ -32,8 +32,7 @@ namespace UI
 
         void SplashScreenUIController::update()
         {
-            updateTimer();
-            showMainMenu();
+            outscal_logo_view->update();
         }
 
         void SplashScreenUIController::render()
@@ -45,22 +44,17 @@ namespace UI
         {
             sf::Vector2f position = getLogoPosition();
             outscal_logo_view->initialize(Config::outscal_logo_texture_path, logo_width, logo_height, position);
-
         }
 
-        void SplashScreenUIController::showMainMenu()
+        void SplashScreenUIController::fadeInAnimationCallback()
         {
-            if (elapsed_duration >= splash_screen_duration)
-            {
-                ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
-                GameService::setGameState(GameState::MAIN_MENU);
-            }
-
+            outscal_logo_view->playAnimation(AnimationType::FADE_OUT, logo_animation_duration, std::bind(&SplashScreenUIController::fadeOutAnimationCallback, this));
         }
 
-        void SplashScreenUIController::updateTimer()
+        void SplashScreenUIController::fadeOutAnimationCallback()
         {
-            elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+            ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
+            GameService::setGameState(GameState::MAIN_MENU);
         }
 
         sf::Vector2f SplashScreenUIController::getLogoPosition()
@@ -75,7 +69,7 @@ namespace UI
 
         void SplashScreenUIController::show()
         {
-
+            outscal_logo_view->playAnimation(AnimationType::FADE_IN, logo_animation_duration, std::bind(&SplashScreenUIController::fadeInAnimationCallback, this));
         }
     }
 }
