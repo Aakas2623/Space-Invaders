@@ -116,5 +116,7 @@
     <ClInclude Include="header\Collectible\ICollectible.h" />
     <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
     <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
   </ItemGroup>
 </Project>
