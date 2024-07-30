@@ -38,6 +38,7 @@ namespace Global
 
         void createServices();
         void clearAllServices();
+        
 
     public:
         static ServiceLocator* getInstance();
@@ -45,6 +46,8 @@ namespace Global
         void initialize();
         void update();
         void render();
+
+        void deleteServiceLocator();
 
         Event::EventService* getEventService();
         Graphics::GraphicService* getGraphicService();

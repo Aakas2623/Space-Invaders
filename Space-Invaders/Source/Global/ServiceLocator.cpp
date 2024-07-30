@@ -176,5 +176,7 @@ namespace Global
 
 	SoundService* ServiceLocator::getSoundService() { return sound_service; }
 
+	void ServiceLocator::deleteServiceLocator() { delete(this); }
+
 	
 }
