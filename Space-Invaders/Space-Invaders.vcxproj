@@ -134,6 +134,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\AnimationSysytem\AnimationService.cpp" />
+    <ClCompile Include="Source\AnimationSysytem\AnimationSystem.cpp" />
     <ClCompile Include="source\Bullet\BulletConfig.cpp" />
     <ClCompile Include="source\Bullet\BulletController.cpp" />
     <ClCompile Include="source\Bullet\BulletModel.cpp" />
@@ -171,6 +173,7 @@
     <ClCompile Include="source\Powerup\PowerupService.cpp" />
     <ClCompile Include="source\Powerup\PowerupView.cpp" />
     <ClCompile Include="source\Sound\SoundService.cpp" />
+    <ClCompile Include="Source\UI\SplashScreen\SplashScreenUIController.cpp" />
     <ClCompile Include="source\Time\TimeService.cpp" />
     <ClCompile Include="source\Main\GameService.cpp" />
     <ClCompile Include="source\Graphics\GraphicService.cpp" />
@@ -180,6 +183,7 @@
     <ClCompile Include="source\Player\PlayerView.cpp" />
     <ClCompile Include="source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="source\UI\MainMenu\MainMenuUIController.cpp" />
+    <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="source\UI\UIElement\ImageView.cpp" />
     <ClCompile Include="source\UI\UIElement\TextView.cpp" />
@@ -187,6 +191,10 @@
     <ClCompile Include="source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\AnimationSystem\AnimationService.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystem.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
     <ClInclude Include="header\Bullet\BulletConfig.h" />
     <ClInclude Include="header\Bullet\BulletController.h" />
     <ClInclude Include="header\Bullet\BulletModel.h" />
@@ -229,6 +237,7 @@
     <ClInclude Include="header\Powerup\PowerupView.h" />
     <ClInclude Include="header\Projectile\IProjectile.h" />
     <ClInclude Include="header\Sound\SoundService.h" />
+    <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
     <ClInclude Include="header\Time\TimeService.h" />
     <ClInclude Include="header\Main\GameService.h" />
     <ClInclude Include="header\Graphics\GraphicService.h" />
@@ -239,6 +248,7 @@
     <ClInclude Include="header\UI\GameplayUI\GameplayUIController.h" />
     <ClInclude Include="header\UI\Interface\IUIController.h" />
     <ClInclude Include="header\UI\MainMenu\MainMenuUIController.h" />
+    <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="header\UI\UIElement\ButtonView.h" />
     <ClInclude Include="header\UI\UIElement\ImageView.h" />
     <ClInclude Include="header\UI\UIElement\TextView.h" />
