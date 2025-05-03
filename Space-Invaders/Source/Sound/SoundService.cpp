@@ -27,6 +27,8 @@ namespace Sound
 			printf("Error loading background music file");
 		if (!buffer_powerup_disabled.loadFromFile(Config::powerup_disabled_sound_path))
 			printf("Error loading background music file");
+		if (!buffer_explosion_sound.loadFromFile(Config::explosion_sound_path))
+			printf("error loading bakground music file");
 	}
 
 	void SoundService::playSound(SoundType soundType)
@@ -52,6 +54,11 @@ namespace Sound
 		case SoundType::POWERUP_DISABLED:
 			powerup_sound_effect.setBuffer(buffer_powerup_disabled);
 			powerup_sound_effect.play();
+			break;
+
+		case SoundType::EXPLOSION:
+			sound_effect.setBuffer(buffer_explosion_sound);
+			sound_effect.play();
 			break;
 
 		default:

@@ -28,6 +28,8 @@ namespace Sound
 		sf::SoundBuffer buffer_powerup_enabled;
 		sf::SoundBuffer buffer_powerup_disabled;
 
+		sf::SoundBuffer buffer_explosion_sound;
+
 		void loadBackgroundMusicFromFile();
 		void loadSoundFromFile();
 
