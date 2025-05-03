@@ -40,29 +40,23 @@ namespace UI
 
         void GameplayUIController::initializeText()
         {
-            
             sf::String enemies_killed_string = "Enemies Killed  :  0";
-
            
             enemies_killed_text->initialize(enemies_killed_string, sf::Vector2f(enemies_killed_text_x_position, text_y_position), FontType::BUBBLE_BOBBLE, font_size, text_color);
         }
 
         void GameplayUIController::update()
         {
-            
             updateEnemiesKilledText();
         }
 
         void GameplayUIController::render()
-        {
-            
+        {   
             enemies_killed_text->render();
             drawPlayerLives();
         }
 
         void GameplayUIController::show() { }
-
-       
 
         void GameplayUIController::updateEnemiesKilledText()
         {

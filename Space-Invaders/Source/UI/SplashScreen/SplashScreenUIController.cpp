@@ -43,7 +43,7 @@ namespace UI
         void SplashScreenUIController::initializeOutscalLogo()
         {
             sf::Vector2f position = getLogoPosition();
-            outscal_logo_view->initialize(Config::outscal_logo_texture_path, logo_width, logo_height, position);
+            outscal_logo_view->initialize(Config::splash_texture_path, logo_width, logo_height, position);
         }
 
         void SplashScreenUIController::fadeInAnimationCallback()
