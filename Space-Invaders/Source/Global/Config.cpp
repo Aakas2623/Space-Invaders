@@ -8,6 +8,8 @@ namespace Global
 
 	const sf::String Config::player_texture_path = "assets/textures/player_ship.png";
 
+	const sf::String Config::splash_texture_path = "assets/textures/splash.png";
+
 
 	const sf::String Config::zapper_texture_path = "assets/textures/zapper.png";
 

@@ -1,18 +1,20 @@
 #pragma once
 #include "../../header/UI/MainMenu/MainMenuUIController.h"
-
 #include "../../header/UI/GameplayUI/GameplayUIController.h"
-
-
+#include "../../header/UI/SplashScreen/SplashScreenUIController.h"
 #include "../../header/UI/Interface/IUIController.h"
+#include "../../Header/UI/InstructionUI/InstructionUIController.h"
 
 namespace UI
 {
 	class UIService
 	{
 	private:
+
+		SplashScreen::SplashScreenUIController* splash_screen_ui_controller;
 		MainMenu::MainMenuUIController* main_menu_controller;
 		GameplayUI::GameplayUIController* gameplay_ui_controller;
+		InstructionUI::InstructionUIController* instruction_ui_controller;
 
 
 		void createControllers();

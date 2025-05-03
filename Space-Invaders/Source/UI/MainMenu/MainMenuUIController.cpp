@@ -3,7 +3,6 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Graphics/GraphicService.h"
 #include "../../header/Global/Config.h"
-
 #include "../../header/Sound/SoundService.h"
 #include "../../header/Event/EventService.h"
 
@@ -44,8 +43,6 @@ namespace UI
             background_image = new ImageView();
         }
 
-      
-
         void MainMenuUIController::createButtons()
         {
             play_button = new ButtonView();
@@ -60,8 +57,6 @@ namespace UI
             background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
             background_image->setImageAlpha(background_alpha);
         }
-
-        
 
         void MainMenuUIController::initializeButtons()
         {
@@ -105,7 +100,6 @@ namespace UI
             play_button->update();
             instructions_button->update();
             quit_button->update();
-            
         }
 
         void MainMenuUIController::render()
@@ -114,7 +108,6 @@ namespace UI
             play_button->render();
             instructions_button->render();
             quit_button->render();
-          
         }
 
         void MainMenuUIController::show()
@@ -123,7 +116,6 @@ namespace UI
             play_button->show();
             instructions_button->show();
             quit_button->show();
-            
         }
 
         void MainMenuUIController::destroy()
@@ -132,7 +124,6 @@ namespace UI
             delete (instructions_button);
             delete (quit_button);
             delete (background_image);
-            
         }
     }
 }
